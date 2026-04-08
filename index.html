@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio – Afrizal</title>
+    <meta
+      name="description"
+      content="Web developer yang ngebangun hal-hal beneran. Portfolio, project, dan sertifikat."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- ─── NAV ─── -->
+    <nav>
+      <a href="#home" class="nav-logo"
+        >Afrizal<span class="accent-dot"></span
+      ></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="scroll-link">Home</a></li>
+        <li><a href="#about" class="scroll-link">About</a></li>
+        <li><a href="#projects" class="scroll-link">Projects</a></li>
+        <li><a href="#certificates" class="scroll-link">Certificates</a></li>
+        <li><a href="#contact" class="nav-cta scroll-link">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <section id="home">
+      <div class="hero-bg-text">DEV</div>
+
+      <!-- Kiri: konten teks -->
+      <div class="hero-content">
+        <div class="hero-label">Portfolio 2025</div>
+        <h1 class="hero-name">
+          Halo, gue
+          <span class="accent-word">Afrizal.</span>
+        </h1>
+        <p class="hero-tagline">
+          Junior web dev yang lebih suka <em>nulis kode beneran</em> daripada
+          ngomong doang. Ngebangun interface yang works, bukan cuma kelihatan
+          kerja.
+        </p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary scroll-link"
+            >Lihat Project →</a
+          >
+          <a href="#contact" class="btn btn-ghost scroll-link">Hubungi Gue</a>
+        </div>
+        <div class="hero-scroll">
+          <div class="scroll-line"></div>
+          Scroll kebawah
+        </div>
+      </div>
+
+      <!-- Kanan: foto -->
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-inner">
+          <img
+            src="profile/profiles.jpeg"
+            alt="[Nama Lo]"
+            onerror="
+              this.style.display = 'none';
+              this.parentElement.querySelector(
+                '.photo-placeholder',
+              ).style.display = 'flex';
+            "
+          />
+          <div class="photo-placeholder" style="display: none">
+            <div class="photo-placeholder-icon">👤</div>
+            <div class="photo-placeholder-text">
+              Ganti src="foto-gue.jpg"<br />dengan foto asli lo
+            </div>
+          </div>
+        </div>
+        <div class="hero-photo-tag">Junior Web Dev</div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ─── ABOUT ─── -->
+    <section id="about">
+      <div class="section-label" data-num="01">Tentang</div>
+      <h2 class="section-title">Siapa gue<br />sebenarnya.</h2>
+      <div class="about-grid fade-up">
+        <div class="about-text">
+          <p>
+            Gue <em>Afrizal Dwi Saiful A</em>, student yang lagi serius
+            mendalami dunia web development. Bukan cuma belajar teorinya, tapi
+            langsung praktek bikin hal-hal yang bisa dipakai beneran.
+          </p>
+          <p>
+            Mulai dari landing page simple sampai web app yang punya logika di
+            baliknya — gue tertarik di keduanya.
+            <em>Frontend yang enak dilihat sekaligus enak dipake.</em>
+          </p>
+          <p>
+            Kalau lagi ga ngoding, gue biasanya ngulik desain, coba framework
+            baru, atau ngeliat-lihat portfolio developer lain buat cari
+            inspirasi (dan termotivasi panik).
+          </p>
+        </div>
+        <div class="about-right">
+          <p class="skills-heading">// Tech Stack</p>
+          <div class="skills-list">
+            <span class="skill-tag main">HTML</span>
+            <span class="skill-tag main">CSS</span>
+            <span class="skill-tag main">JavaScript</span>
+            <span class="skill-tag main">React</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">Git & GitHub</span>
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">PHP</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Laravel</span>
+          </div>
+
+          <p class="skills-heading">// Pengalaman</p>
+          <div class="exp-item">
+            <div class="exp-role">WordPress Developer</div>
+            <div class="exp-meta">Juli – September 2025 · Project-based</div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-role">Quality Assurance</div>
+            <div class="exp-meta">
+              September - Desember 2025 · Project-based
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-role">Asisten Trainer</div>
+            <div class="exp-meta">Desember 2025 - Sekarang</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ─── PROJECTS ─── -->
+    <section id="projects">
+      <div class="section-label" data-num="02">Karya</div>
+      <h2 class="section-title">Project yang<br />udah gue bangun.</h2>
+      <div class="projects-grid fade-up">
+        <div class="project-card">
+          <div class="project-num">001</div>
+          <h3 class="project-name">Laravel CRUD</h3>
+          <p class="project-desc">
+            Proyek Laravel CRUD dibuat untuk mempermudah pengelolaan data agar
+            lebih rapi dan efisien.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">Laravel</span>
+            <span class="stack-tag">PHP</span>
+            <span class="stack-tag">MySQL</span>
+            <span class="stack-tag">CSS</span>
+            <span class="stack-tag">HTML</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">↗ Live Demo</a>
+            <a
+              href="https://github.com/afrizalldwi/Laravel-CRUD"
+              class="project-link project-link-ghost"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-num">002</div>
+          <h3 class="project-name">Stopwatch React</h3>
+          <p class="project-desc">
+            Proyek Stopwatch React dibuat untuk mengukur waktu secara akurat dan
+            mudah digunakan.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">Tailwind CSS</span>
+            <span class="stack-tag">Vanilla JS</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">↗ Live Demo</a>
+            <a
+              href="https://github.com/afrizalldwi/ReactJS-Stopwatch"
+              class="project-link project-link-ghost"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-num">003</div>
+          <h3 class="project-name">FullStack SportOn</h3>
+          <p class="project-desc">
+            Proyek Fullstack Sporton Next.js dibuat untuk memudahkan akses
+            informasi dan aktivitas olahraga.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">Next.JS</span>
+            <span class="stack-tag">Tailwind CSS</span>
+            <span class="stack-tag">TypeScript</span>
+            <!-- <span class="stack-tag">Express.JS</span> -->
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">↗ Live Demo</a>
+            <a
+              href="https://github.com/afrizalldwi/fullstack-sporton"
+              class="project-link project-link-ghost"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-num">004</div>
+          <h3 class="project-name">Kalkulator JavaScript</h3>
+          <p class="project-desc">
+            Proyek Kalkulator JavaScript dibuat untuk melakukan perhitungan
+            matematika sederhana secara cepat dan praktis.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">HTML</span>
+            <span class="stack-tag">Tailwind CSS</span>
+            <span class="stack-tag">Vanilla JS</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">↗ Live Demo</a>
+            <a
+              href="https://github.com/afrizalldwi/Kalkulator-JS"
+              class="project-link project-link-ghost"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-num">005</div>
+          <h3 class="project-name">Absensi JavaScript</h3>
+          <p class="project-desc">
+            Proyek Absensi JavaScript dibuat untuk mencatat kehadiran secara
+            digital agar lebih rapi dan mudah dipantau.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">HTML</span>
+            <span class="stack-tag">Tailwind CSS</span>
+            <span class="stack-tag">Vanilla JS</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">↗ Live Demo</a>
+            <a
+              href="https://github.com/afrizalldwi/Absensi-JS"
+              class="project-link project-link-ghost"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-num">006</div>
+          <h3 class="project-name">Todo App JavaScript</h3>
+          <p class="project-desc">
+            Proyek Todo App JavaScript dibuat untuk mencatat dan mengelola tugas
+            agar lebih teratur dan mudah dipantau.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">HTML</span>
+            <span class="stack-tag">Tailwind CSS</span>
+            <span class="stack-tag">Vanilla JS</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">↗ Live Demo</a>
+            <a
+              href="https://github.com/afrizalldwi/ToDoApp-JS"
+              class="project-link project-link-ghost"
+              >GitHub →</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ─── CERTIFICATES ─── -->
+    <section id="certificates">
+      <div class="section-label" data-num="03">Sertifikat</div>
+      <h2 class="section-title">Bukti belajar<br />yang beneran.</h2>
+      <div class="certs-grid fade-up">
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-name">HTML</div>
+          <div class="cert-issuer">AlwaysNgoding</div>
+          <div class="cert-year">2024</div>
+          <a
+            href="https://drive.google.com/file/d/1CmkNFrr8R1o1eOzQP24VEhN4EtOV2LjL/view?usp=sharing"
+            class="cert-link"
+            >Lihat Sertifikat ↗</a
+          >
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-name">CSS</div>
+          <div class="cert-issuer">AlwaysNgoding</div>
+          <div class="cert-year">2024</div>
+          <a
+            href="https://drive.google.com/file/d/1x2XeyUYFsGN1VR76K5mnvYGknDG4HCLm/view?usp=sharing"
+            class="cert-link"
+            >Lihat Sertifikat ↗</a
+          >
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-name">JavaScript</div>
+          <div class="cert-issuer">AlwaysNgoding</div>
+          <div class="cert-year">2025</div>
+          <a
+            href="https://drive.google.com/file/d/1TseQ-rqJhenx29qQa5BEmSCADe8uGQ6t/view?usp=sharing"
+            class="cert-link"
+            >Lihat Sertifikat ↗</a
+          >
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-name">Git Fundamental</div>
+          <div class="cert-issuer">CodePolitan</div>
+          <div class="cert-year">2025</div>
+          <a
+            href="https://drive.google.com/file/d/1QpjXD4O4z13lPhIOme5_5sh1vmRhUV5P/view?usp=sharing"
+            class="cert-link"
+            >Lihat Sertifikat ↗</a
+          >
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-name">Python Fundamental</div>
+          <div class="cert-issuer">CodePolitan</div>
+          <div class="cert-year">2025</div>
+          <a
+            href="https://drive.google.com/file/d/13vWI_92MxTSiTzCYhoJ7pYaGR8Y2m1zq/view?usp=sharing"
+            class="cert-link"
+            >Lihat Sertifikat ↗</a
+          >
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-name">Network Fundamental</div>
+          <div class="cert-issuer">AgunaCourse</div>
+          <div class="cert-year">2023</div>
+          <a
+            href="https://drive.google.com/file/d/1IGRsxEhvG5l1oyrV9GZqWfKhYnlzkpXQ/view?usp=sharing"
+            class="cert-link"
+            >Lihat Sertifikat ↗</a
+          >
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-name">Linux Fundamental</div>
+          <div class="cert-issuer">AgunaCourse</div>
+          <div class="cert-year">2023</div>
+          <a
+            href="https://drive.google.com/file/d/1dj-kmCwPNtX3aRlrlMNe3nATpeX9I6la/view?usp=sharing"
+            class="cert-link"
+            >Lihat Sertifikat ↗</a
+          >
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-name">Python Fundamental</div>
+          <div class="cert-issuer">AgunaCourse</div>
+          <div class="cert-year">2025</div>
+          <a
+            href="https://drive.google.com/file/d/19zMeUj4VCMFDOv_aUC4hm_C1hNMBQDat/view?usp=sharing"
+            class="cert-link"
+            >Lihat Sertifikat ↗</a
+          >
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-icon">🎓</div>
+          <div class="cert-name">MTCNA</div>
+          <div class="cert-issuer">MikroTik</div>
+          <div class="cert-year">2025</div>
+          <a
+            href="https://drive.google.com/file/d/1q9auSMdOiOywY7kHUOW7WBKwaj9nkagg/view?usp=sharing"
+            class="cert-link"
+            >Lihat Sertifikat ↗</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ─── CONTACT ─── -->
+    <section id="contact">
+      <div class="section-label" data-num="04">Kontak</div>
+      <div class="contact-inner fade-up">
+        <div class="contact-left">
+          <h2 class="contact-big">
+            Let's<br /><span>work</span><br />together.
+          </h2>
+          <p class="contact-desc">
+            Ada project, kolaborasi, atau sekadar mau ngobrol soal web dev? Gue
+            terbuka. Drop pesan, gue balas secepat gue bisa.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:afrizalanas22@gmail.com" class="contact-item">
+              <span class="contact-item-icon">✉</span>
+              <span>afrizalanas22@gmail.com</span>
+            </a>
+            <a
+              href="https://github.com/afrizalldwi"
+              target="_blank"
+              class="contact-item"
+            >
+              <span class="contact-item-icon">⌥</span>
+              github.com/afrizalldwi
+            </a>
+            <a
+              href="https://linkedin.com/in/afrizal-dwi-saiful-anas-7b3320392"
+              target="_blank"
+              class="contact-item"
+            >
+              <span class="contact-item-icon">in</span>
+              linkedin.com/in/afrizaldwisaifulanas
+            </a>
+            <a
+              href="https://instagram.com/afrizallllll"
+              target="_blank"
+              class="contact-item"
+            >
+              <span class="contact-item-icon">◎</span>
+              @afrizallllll
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <form
+            class="contact-form"
+            id="contactForm"
+            onsubmit="handleSubmit(event)"
+          >
+            <div class="form-group">
+              <label class="form-label">Nama</label>
+              <input
+                type="text"
+                class="form-input"
+                placeholder="Nama lo"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-input"
+                placeholder="email@lo.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Pesan</label>
+              <textarea
+                class="form-textarea"
+                placeholder="Cerita aja, ga usah formal..."
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="width: 100%; justify-content: center"
+            >
+              Kirim Pesan →
+            </button>
+            <div
+              id="formStatus"
+              style="
+                font-family: &quot;DM Mono&quot;, monospace;
+                font-size: 0.75rem;
+                color: var(--accent);
+                display: none;
+                text-align: center;
+              "
+            ></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+      <div class="footer-copy">
+        © 2025 <span>Afrizal</span> — Dibuat dengan kode, bukan drag-n-drop.
+      </div>
+      <div class="footer-right">Built with HTML · Deployed on Github</div>
+    </footer>
+
+    <!-- ─── SCRIPTS ─── -->
+    <script src="script.js"></script>
+  </body>
+</html>

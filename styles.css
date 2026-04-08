@@ -1,0 +1,915 @@
+:root {
+  --bg: #0b0b0b;
+  --bg2: #111111;
+  --bg3: #1a1a1a;
+  --border: #2a2a2a;
+  --text: #e8e8e2;
+  --muted: #888880;
+  --accent: #c8f135;
+  --accent2: #ff6b35;
+  --white: #f5f5f0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto; /* dihandle JS biar lebih reliable */
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── NOISE OVERLAY ─── */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── TYPOGRAPHY ─── */
+h1,
+h2,
+h3 {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  line-height: 1.1;
+}
+.mono {
+  font-family: "DM Mono", monospace;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  background: rgba(11, 11, 11, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-family: "DM Mono", monospace;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+.nav-cta {
+  background: var(--accent);
+  color: var(--bg) !important;
+  padding: 0.4rem 1rem;
+  font-weight: 500 !important;
+}
+
+/* ─── HAMBURGER ─── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  transition: all 0.3s;
+}
+
+/* ─── HERO ─── */
+#home {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 8rem 2.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+  gap: 3rem;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── HERO PHOTO ─── */
+.hero-photo-wrap {
+  position: relative;
+  width: 340px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.hero-photo-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, var(--accent) 0%, transparent 60%);
+  z-index: 0;
+}
+
+.hero-photo-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  right: -12px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--border);
+  z-index: -1;
+}
+
+.hero-photo-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--bg3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  filter: grayscale(20%);
+  transition: filter 0.4s ease;
+}
+
+.hero-photo-inner:hover img {
+  filter: grayscale(0%);
+}
+
+/* Placeholder kalau belum ada foto */
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  height: 100%;
+  color: var(--muted);
+}
+
+.photo-placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+.photo-placeholder-text {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.hero-photo-tag {
+  position: absolute;
+  bottom: 1rem;
+  left: -1rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.75rem;
+  z-index: 2;
+}
+
+.hero-bg-text {
+  position: absolute;
+  top: 50%;
+  right: -2rem;
+  transform: translateY(-50%);
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: clamp(6rem, 20vw, 18rem);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(200, 241, 53, 0.06);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+
+.hero-label {
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-label::before {
+  content: "";
+  display: inline-block;
+  width: 2rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero-name {
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+}
+
+.hero-name .accent-word {
+  color: var(--accent);
+  display: block;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--muted);
+  max-width: 480px;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+}
+
+.hero-tagline em {
+  color: var(--text);
+  font-style: normal;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-family: "DM Mono", monospace;
+  font-size: 0.825rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background: var(--white);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--text);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--border);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 2.5rem;
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 3rem;
+  height: 1px;
+  background: var(--muted);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  animation: scrollline 2s ease-in-out infinite;
+}
+
+@keyframes scrollline {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* ─── SECTIONS ─── */
+section {
+  padding: 6rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::before {
+  content: attr(data-num);
+  color: var(--border);
+  font-size: 0.65rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 3rem;
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ─── ABOUT ─── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-text p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.about-text p em {
+  color: var(--text);
+  font-style: normal;
+}
+
+.about-right {
+}
+
+.skills-heading {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.skill-tag {
+  font-family: "DM Mono", monospace;
+  font-size: 0.775rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--bg2);
+  transition: all 0.2s;
+}
+
+.skill-tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.skill-tag.main {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(200, 241, 53, 0.05);
+}
+
+.exp-item {
+  border-left: 2px solid var(--border);
+  padding-left: 1.25rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.exp-item::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  background: var(--bg3);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+}
+
+.exp-role {
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.exp-meta {
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* ─── PROJECTS ─── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.project-card {
+  background: var(--bg);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--accent);
+  transition: height 0.3s ease;
+}
+
+.project-card:hover {
+  background: var(--bg2);
+}
+.project-card:hover::before {
+  height: 100%;
+}
+
+.project-num {
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.project-name {
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.project-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.stack-tag {
+  font-family: "DM Mono", monospace;
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  background: var(--bg3);
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-link {
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.project-link:hover {
+  color: var(--white);
+}
+
+.project-link-ghost {
+  color: var(--muted);
+}
+
+.project-link-ghost:hover {
+  color: var(--text);
+}
+
+/* ─── CERTIFICATES ─── */
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.cert-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card::after {
+  content: "✦";
+  position: absolute;
+  top: -1rem;
+  right: -0.5rem;
+  font-size: 5rem;
+  color: rgba(200, 241, 53, 0.03);
+  pointer-events: none;
+}
+
+.cert-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.cert-icon {
+  font-size: 1.5rem;
+}
+
+.cert-name {
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.cert-issuer {
+  font-family: "DM Mono", monospace;
+  font-size: 0.725rem;
+  color: var(--muted);
+}
+
+.cert-year {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin-top: auto;
+}
+
+.cert-link {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ─── CONTACT ─── */
+#contact {
+  padding: 6rem 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-left {
+}
+
+.contact-big {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+
+.contact-big span {
+  color: var(--accent);
+}
+
+.contact-desc {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text);
+  font-family: "DM Mono", monospace;
+  font-size: 0.875rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  transition: all 0.2s;
+}
+
+.contact-item:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.contact-item-icon {
+  font-size: 1rem;
+  width: 1.25rem;
+}
+
+/* ─── FORM ─── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-label {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.form-input,
+.form-textarea {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.875rem 1rem;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 0.925rem;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--accent);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--muted);
+}
+
+.form-textarea {
+  min-height: 120px;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-copy {
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.footer-copy span {
+  color: var(--accent);
+}
+
+.footer-right {
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* ─── FADE IN ANIMATION ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── CURSOR ACCENT ─── */
+.accent-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: blink 1.2s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem 1.25rem;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+  }
+
+  #home {
+    padding: 7rem 1.25rem 4rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 2rem;
+  }
+  .hero-photo-wrap {
+    width: 100%;
+    max-width: 240px;
+    margin: 0 auto;
+    order: -1;
+  }
+  section {
+    padding: 4rem 1.25rem;
+  }
+  #contact {
+    padding: 4rem 1.25rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-bg-text {
+    display: none;
+  }
+  footer {
+    padding: 1.5rem 1.25rem;
+  }
+}
